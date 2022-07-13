@@ -13,4 +13,12 @@ export class AppComponent {
 
     
   }
+
+  login() {
+    
+  }
+
+  callAPI() {
+    
+  }
 }
