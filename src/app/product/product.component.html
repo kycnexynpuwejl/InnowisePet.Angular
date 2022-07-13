@@ -1,0 +1,7 @@
+<div class="productCard" *ngFor="let product of products">
+    
+    <p>{{product.title}}</p>
+
+    <p>{{product.price | currency:'USD':'symbol'}}</p>
+
+</div>

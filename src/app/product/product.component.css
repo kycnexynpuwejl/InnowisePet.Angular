@@ -1,0 +1,8 @@
+div.productCard {
+    display:grid;
+    grid-template-columns: 5fr 2fr;
+    gap:50px;
+    background-color: gray;
+    color: #c0ffee;
+    text-align: center;
+}
