@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
+
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatGridListModule } from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
+import { Routes } from '@angular/router';
 
+
+const routes: Routes =[
+  {path: '', component: ProductListComponent},
+  {path: 'details', component: ProductDetailsComponent}
+];
 
 
 @NgModule({
@@ -23,16 +29,15 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ProductComponent,
-    HeaderComponent
+    ProductListComponent,
+    HeaderComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatIconModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
