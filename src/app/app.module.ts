@@ -15,13 +15,9 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-
-const routes: Routes =[
-  {path: '', component: ProductListComponent},
-  {path: 'details', component: ProductDetailsComponent}
-];
+import { appRoutes } from './routes';
 
 
 @NgModule({
@@ -37,7 +33,8 @@ const routes: Routes =[
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
