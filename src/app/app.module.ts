@@ -4,12 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -24,7 +23,6 @@ import { appRoutes } from './routes';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     ProductListComponent,
     HeaderComponent,
     ProductDetailsComponent
