@@ -1,3 +1,5 @@
-<div *ngFor="let category of categories">
-    <a href="/">{{category.title}}</a>
+<div class="row">
+    <div *ngFor="let category of categories">
+        <p class="h5" style="color:blueviolet" [routerLink]="['/category', category.id]">{{category.title}}</p>
+    </div>
 </div>

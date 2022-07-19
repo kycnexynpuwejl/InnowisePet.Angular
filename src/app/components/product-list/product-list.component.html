@@ -5,13 +5,16 @@
             <div class="col" *ngFor="let product of products">
                 <div class="card shadow-sm">
 
-                    <img [routerLink]="['/details', product.id]" style="display: block; margin-left: auto; margin-right: auto;" src="assets/images/{{product.id}}.jpg" width="300" height="300">
+                    <div style="display: flex; border:5px solid rgb(255, 255, 242)">
+                        <img [routerLink]="['/product/details', product.id]" style="display: block; margin-left: auto; margin-right: auto;" src="assets/images/{{product.id}}.jpg" object-fit="cover" width="100%" height="auto">
+                    </div>
 
                     <div class="card-body">
 
-                        <p class="card-text">{{product.title}}</p>
+                        <p class="card-text h5">{{product.title}}</p>
+                        <p class="card-text h6">{{product.price | currency}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a [routerLink]="['/details', product.id]"><button type="button" class="btn btn-sm btn-outline-secondary">Details</button></a>
+                            <a [routerLink]="['/product/details', product.id]"><button type="button" class="btn btn-sm btn-outline-secondary">Details</button></a>
                             
                             <button type="button" class="btn btn-sm btn-warning">Add to cart</button>
                         </div>

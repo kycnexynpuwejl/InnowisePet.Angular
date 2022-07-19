@@ -1,1 +1,12 @@
-<p>category-details works!</p>
+
+<br>
+
+<div class="h3" style="text-align: center;">
+    {{category.title}}
+</div>
+
+<br>
+
+<div *ngFor="let product of category.products">
+    <p>{{product.description}}</p>
+</div>
