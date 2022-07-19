@@ -11,7 +11,7 @@ import { ProductList } from './product-list.model';
 
 export class ProductListComponent implements OnInit {
 
-  products: ProductList[] = [];
+  products: ProductList[] = []
 
   constructor(private productService: ProductService) { }
   

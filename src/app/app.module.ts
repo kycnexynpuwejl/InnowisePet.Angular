@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './components/home/home.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+
+import { CategoryListComponent } from './components/category-list/category-list.component';
 
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -25,7 +28,9 @@ import { appRoutes } from './routes';
     HomeComponent,
     ProductListComponent,
     HeaderComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoryListComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
