@@ -18,4 +18,8 @@ export class ProductService {
   getProductById(id: string): Observable<ProductDetails> {
     return this.http.get<ProductDetails>(`https://localhost:7001/api/product/${id}`)
   }
+
+  getProductCountFromStorages(id: string): Observable<number> {
+    return this.http.get<number>('https://localhost:7001/api/productstorage/product/' + id)
+  }
 }

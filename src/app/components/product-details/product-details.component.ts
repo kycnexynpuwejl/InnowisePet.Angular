@@ -9,6 +9,7 @@ import { ProductDetails } from './product-details.model';
 export class ProductDetailsComponent implements OnInit {
 
   product!: ProductDetails;
+  productCount!: number
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { 
 
@@ -19,7 +20,11 @@ export class ProductDetailsComponent implements OnInit {
     .getProductById(this.route.snapshot.params['id'])
     .subscribe(response => {
       this.product = response
-      this.product.imageUrl = "/assets/images/" + this.product.imageUrl
+      this.product.imageUrl = "/assets/images/" + this.product.imageUrl;
+
+    this.productService
+    .getProductCountFromStorages(this.route.snapshot.params['id'])
+    .subscribe(response => this.productCount = response)
     });
   }
 
