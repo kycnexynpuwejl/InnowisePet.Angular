@@ -12,6 +12,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -30,6 +31,7 @@ import { appRoutes } from './routes';
     HeaderComponent,
     ProductDetailsComponent,
     CategoryListComponent,
+    CategoryDetailsComponent,
     HomepageComponent
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
+import { ProductList } from '../product-list/product-list.model';
 import { CategoryDetails } from './category-details.model';
 
 @Component({
@@ -10,7 +11,7 @@ import { CategoryDetails } from './category-details.model';
 })
 export class CategoryDetailsComponent implements OnInit {
   category!: CategoryDetails
-
+  products!: Array<ProductList>
   constructor(private categoryService: CategoryService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -19,7 +20,6 @@ export class CategoryDetailsComponent implements OnInit {
     .subscribe(response => 
       {
         this.category = response
-        this.category.products = response.products
     })
   }
 

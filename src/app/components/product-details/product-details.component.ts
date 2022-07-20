@@ -17,7 +17,10 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.productService
     .getProductById(this.route.snapshot.params['id'])
-    .subscribe(response => this.product = response);
+    .subscribe(response => {
+      this.product = response
+      this.product.imageUrl = "/assets/images/" + this.product.imageUrl
+    });
   }
 
 }

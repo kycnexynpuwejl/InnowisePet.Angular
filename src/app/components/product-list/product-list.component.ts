@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { CategoryDetails } from '../category-details/category-details.model';
 import { ProductList } from './product-list.model';
 
 
@@ -10,6 +11,9 @@ import { ProductList } from './product-list.model';
 
 
 export class ProductListComponent implements OnInit {
+
+  @Input()
+  filter!: CategoryDetails
 
   products: ProductList[] = []
 

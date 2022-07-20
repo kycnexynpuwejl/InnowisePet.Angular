@@ -2,11 +2,11 @@
 <br>
 
 <div class="h3" style="text-align: center;">
-    {{category.title}}
+    {{category?.title}}
 </div>
 
 <br>
 
-<div *ngFor="let product of category.products">
-    <p>{{product.description}}</p>
+<div *ngFor="let product of category?.products">
+    <p>{{product?.title}}</p>
 </div>
