@@ -6,8 +6,7 @@ import {ICategory} from "../../models/category.model";
 
 @Component({
   selector: 'app-category-details',
-  templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.css']
+  templateUrl: './category-details.component.html'
 })
 export class CategoryDetailsComponent implements OnInit {
   category!: ICategory

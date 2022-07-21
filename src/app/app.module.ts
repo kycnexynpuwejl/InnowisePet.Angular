@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common'
 
 import { AppComponent } from './app.component';
 
-import { HomeComponent } from './components/home/home.component';
+import { LandingComponent } from './components/landing/landing.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -14,11 +14,11 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './routes';
 
@@ -26,7 +26,7 @@ import { appRoutes } from './routes';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    LandingComponent,
     ProductListComponent,
     HeaderComponent,
     ProductDetailsComponent,
