@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { CategoryDetails } from '../category-details/category-details.model';
-import { ProductList } from './product-list.model';
+import { IProduct } from '../../models/product.model';
+import {ICategory} from "../../models/category.model";
 
 
 @Component({
@@ -13,12 +13,12 @@ import { ProductList } from './product-list.model';
 export class ProductListComponent implements OnInit {
 
   @Input()
-  filter!: CategoryDetails
+  filter!: ICategory
 
-  products: ProductList[] = []
+  products: IProduct[] = []
 
   constructor(private productService: ProductService) { }
-  
+
   ngOnInit() {
     this.productService.getProducts().subscribe(response => {
       this.products = response.concat(response).concat(response);

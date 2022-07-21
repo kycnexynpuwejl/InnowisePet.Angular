@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
-import { ProductList } from '../product-list/product-list.model';
-import { CategoryDetails } from './category-details.model';
+import {IProduct} from "../../models/product.model";
+import {ICategory} from "../../models/category.model";
 
 @Component({
   selector: 'app-category-details',
@@ -10,14 +10,14 @@ import { CategoryDetails } from './category-details.model';
   styleUrls: ['./category-details.component.css']
 })
 export class CategoryDetailsComponent implements OnInit {
-  category!: CategoryDetails
-  products!: Array<ProductList>
+  category!: ICategory
+  products!: Array<IProduct>
   constructor(private categoryService: CategoryService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.categoryService
     .getCategoryById(this.route.snapshot.params['id'])
-    .subscribe(response => 
+    .subscribe(response =>
       {
         this.category = response
     })
