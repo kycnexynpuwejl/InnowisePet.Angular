@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="" *ngFor="let category of categories">
-        <p class="h5" style="color:blueviolet" [routerLink]="['/category', category.id]">{{category.title}}</p>
+<div class="container py-4 text-center grid grid-cols-3">
+    <div class="container btn btn-outline-primary" *ngFor="let category of categories">
+        <div class="text-dark text-lg" [routerLink]="['/category', category.id]">{{category.title}}</div>
     </div>
 </div>

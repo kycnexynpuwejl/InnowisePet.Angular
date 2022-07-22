@@ -22,6 +22,12 @@ import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './routes';
 
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatTabsModule} from "@angular/material/tabs";
+import { FooterComponent } from './components/footer/footer.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+
 
 @NgModule({
   declarations: [
@@ -32,14 +38,19 @@ import { appRoutes } from './routes';
     ProductDetailsComponent,
     CategoryListComponent,
     CategoryDetailsComponent,
-    HomepageComponent
+    HomepageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

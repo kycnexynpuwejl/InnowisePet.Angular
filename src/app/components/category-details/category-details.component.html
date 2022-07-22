@@ -1,14 +1,14 @@
+<div class="container grid grid-cols-3 py-2 text-5xl text-gray-800">
+  <div class="col-1">
+    <button [routerLink]="['/']" class="btn btn-secondary">Back</button>
+  </div>
+  <div class="col-auto text-center">
+    {{category.title}}
+  </div>
+  <div class="text-right text-sm py-2">
+    {{category.products.length}} {{category.products.length == 1 ? 'product' : 'products'}}
+  </div>
 
-<br>
-
-<div class="h3" style="text-align: center;">
-    {{category?.title}}
-</div>
-
-<br>
-
-<div *ngFor="let product of category?.products">
-    <p>{{product?.title}}</p>
 </div>
 
 <app-product-list [filter]="filter"></app-product-list>
