@@ -10,3 +10,5 @@
 <div *ngFor="let product of category?.products">
     <p>{{product?.title}}</p>
 </div>
+
+<app-product-list [filter]="filter"></app-product-list>

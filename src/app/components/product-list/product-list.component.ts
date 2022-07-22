@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { IProduct } from '../../models/product.model';
-import {ICategory} from "../../models/category.model";
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,17 +12,39 @@ import {ICategory} from "../../models/category.model";
 
 export class ProductListComponent implements OnInit {
 
-  @Input()
-  filter!: ICategory
-
   products: IProduct[] = []
 
-  constructor(private productService: ProductService) { }
+  @Input()
+  filter = false
+
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(response => {
-      this.products = response.concat(response).concat(response);
-    });
+
+    if(!this.filter) {
+      this.productService.getProducts()
+      .subscribe(response => {
+
+        this.products = response
+  
+        for(let i = 0; i < this.products.length; i++){
+          this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
+        }
+      });
+    }
+    else {
+      this.productService.getProductsByCategoryId(this.route.snapshot.params['id'])
+      .subscribe(response => {
+
+        this.products = response
+  
+        for(let i = 0; i < this.products.length; i++){
+          this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
+        }
+      })
+    }
   }
+    
 
 }

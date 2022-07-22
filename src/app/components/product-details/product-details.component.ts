@@ -21,11 +21,11 @@ export class ProductDetailsComponent implements OnInit {
     .subscribe(response => {
       this.product = response
       this.product.imageUrl = "/assets/images/" + this.product.imageUrl;
+    });
 
     this.productService
-    .getProductCountFromStorages(this.route.snapshot.params['id'])
-    .subscribe(response => this.productCount = response)
-    });
+      .getProductCountFromStorages(this.route.snapshot.params['id'])
+      .subscribe(response => this.productCount = response)
   }
 
 }
