@@ -6,8 +6,10 @@ import {ProductStorageService} from "../../services/product-storage.service";
 import {IProductStorage} from "../../models/product-storage.model";
 
 @Component({
-  templateUrl: './product-details.component.html'
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent implements OnInit {
 
   product!: IProduct
@@ -39,5 +41,6 @@ export class ProductDetailsComponent implements OnInit {
         })
       })
   }
-
 }
+
+
