@@ -4,6 +4,7 @@
     <mat-paginator [length]="productCount"
                    [pageSize]="pageSize"
                    [pageSizeOptions]="[3, 6, 9, 12]"
+                   (page)="pageOnChange($event)"
                    aria-label="Select page">
     </mat-paginator>
 

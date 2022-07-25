@@ -28,12 +28,12 @@ export class CategoryDetailsComponent implements OnInit {
         this.category = response
       })
 
-    this.productService
-      .getProductsByCategoryId(this.route.snapshot.params['id'])
-      .subscribe(response =>
-      {
-        this.products = response
-      })
+    // this.productService
+    //   .getProductsByCategoryId(this.route.snapshot.params['id'])
+    //   .subscribe(response =>
+    //   {
+    //     this.products = response
+    //   })
   }
 
 }
