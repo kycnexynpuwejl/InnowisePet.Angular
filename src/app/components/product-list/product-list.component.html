@@ -1,6 +1,12 @@
 <div class="album py-5 bg-light">
   <div class="container">
 
+    <mat-paginator [length]="productCount"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[3, 6, 9, 12]"
+                   aria-label="Select page">
+    </mat-paginator>
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col" *ngFor="let product of products">
         <div class="card shadow-sm">

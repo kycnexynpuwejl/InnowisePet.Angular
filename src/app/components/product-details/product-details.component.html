@@ -1,11 +1,11 @@
 <div class="container col-xxl-8 px-4 py-5">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-10 col-sm-8 col-lg-6">
-      <img [src]="product?.imageUrl" class="d-block mx-lg-auto img-fluid" width="auto" height="auto" loading="lazy" alt="image">
+      <img [src]="product.imageUrl" class="d-block mx-lg-auto img-fluid" width="auto" height="auto" loading="lazy" alt="image">
     </div>
     <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">{{product?.title}}</h1>
-      <p class="lead">{{product?.description}}</p>
+      <h1 class="display-5 fw-bold lh-1 mb-3">{{product.title}}</h1>
+      <p class="lead">{{product.description}}</p>
       <p class="lead">Availability: {{productCount}}</p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <button type="button" class="btn btn-warning btn-lg px-4 me-md-2">{{ productCount > 0 ? 'Add to cart' : 'Not available' }}</button>
@@ -20,17 +20,17 @@
 
   <mat-tab label="Info">
     <div class="text-center text-3xl">
-      {{product?.description}}
+      {{product.description}}
     </div>
   </mat-tab>
 
   <mat-tab label="Availability">
     <div class="container">
 
-      <table *ngIf="productCount > 0" mat-table [dataSource]="productStorages" class="mat-elevation-z8 w-100">
+      <table *ngIf="productCount > 0" mat-table [dataSource]="productStorages" class="mat-elevation-z8 w-100 bg-gradient">
 
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <th mat-header-cell *matHeaderCellDef> Storage </th>
           <td mat-cell *matCellDef="let element"> {{element.storageTitle}} </td>
         </ng-container>
 
