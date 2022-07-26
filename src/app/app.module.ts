@@ -28,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { FilterComponent } from './components/filter/filter.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     CategoryListComponent,
     CategoryDetailsComponent,
     HomepageComponent,
-    FooterComponent
+    FooterComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

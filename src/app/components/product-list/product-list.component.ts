@@ -25,20 +25,10 @@ export class ProductListComponent implements OnInit {
 
   @Input() @Output() search = ''
 
-  // MatPaginator Output
-  pageEvent: PageEvent;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {
-
-
-
   }
-
-  /*ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.pageEvent)
-    console.log(changes)
-  }*/
 
   ngOnInit() {
 
@@ -70,79 +60,5 @@ export class ProductListComponent implements OnInit {
         })
     }
   }
-
-  pageOnChange($event: PageEvent) {
-
-    this.pageEvent = $event
-    this.pageSize = this.pageEvent.pageSize
-    this.pageNumber = this.pageEvent.pageIndex
-
-    if (!this.filter) {
-      this.productService.getProducts(this.pageSize, this.pageNumber + 1, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-
-        });
-
-    } else {
-
-      this.productService.getProductsByCategoryId(this.route.snapshot.params['id'], this.pageEvent.pageSize, this.pageEvent.pageIndex + 1, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-        })
-    }
-
-  }
-
-
-
-  filterChange($event: KeyboardEvent) {
-
-    if($event.keyCode == 13)
-    {
-      if (!this.filter) {
-
-        this.productService.getProducts(this.pageSize, 1, this.search)
-          .subscribe(response => {
-
-            this.products = response.paginatedProducts
-            this.productCount = response.productCount
-
-            for (let i = 0; i < this.products.length; i++) {
-              this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-            }
-
-          })
-
-      } else {
-
-        this.productService.getProductsByCategoryId(this.route.snapshot.params['id'], this.pageSize, 1, this.search)
-          .subscribe(response => {
-
-            this.products = response.paginatedProducts
-            this.productCount = response.productCount
-
-
-            for (let i = 0; i < this.products.length; i++) {
-              this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-            }
-          })
-      }
-
-    }
-    }
 
 }

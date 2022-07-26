@@ -1,0 +1,14 @@
+<app-category-list></app-category-list>
+
+<div class="container">
+  <input [(ngModel)]="search" (keypress)="filterChange($event)"
+         type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
+</div>
+
+<mat-paginator [length]="productCount"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[3, 6, 9, 12]"
+               [showFirstLastButtons]="true"
+               (page)="pageOnChange($event)"
+               aria-label="Select page">
+</mat-paginator>

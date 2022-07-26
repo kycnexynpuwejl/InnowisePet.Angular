@@ -1,20 +1,10 @@
 <div class="album py-2 bg-light">
+
   <div class="container">
 
-    <div class="container">
-      <input [(ngModel)]="search" (keypress)="filterChange($event)"
-             type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
-    </div>
+    <div *ngIf="productCount == 0" class="h1 text-center py-28">No products</div>
 
-    <mat-paginator [length]="productCount"
-                   [pageSize]="pageSize"
-                   [pageSizeOptions]="[3, 6, 9, 12]"
-                   [showFirstLastButtons]="true"
-                   (page)="pageOnChange($event)"
-                   aria-label="Select page">
-    </mat-paginator>
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="productCount != 0">
       <div class="col" *ngFor="let product of products">
         <div class="card shadow-sm">
 
@@ -31,9 +21,7 @@
 
               <button type="button" class="btn btn-sm btn-warning">Add to cart</button>
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
