@@ -2,9 +2,8 @@
   <div class="container">
 
     <div class="container">
-    <input type="text"
-           [(ngModel)]="search" (ngModelChange)="filterChange($event)"
-    class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
+      <input [(ngModel)]="search" (keypress)="filterChange($event)"
+             type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
     </div>
 
     <mat-paginator [length]="productCount"

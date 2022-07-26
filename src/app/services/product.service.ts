@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {Injectable, Input} from '@angular/core';
-import { Observable } from 'rxjs';
+import {debounceTime, Observable} from 'rxjs';
 import { IProduct } from '../models/product.model';
 import {PaginatedProducts} from "../models/paginated-products";
 
