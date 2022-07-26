@@ -2,9 +2,8 @@
 
   <div class="container">
 
-    <div *ngIf="productCount == 0" class="h1 text-center py-28">No products</div>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="productCount != 0">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col" *ngFor="let product of products">
         <div class="card shadow-sm">
 

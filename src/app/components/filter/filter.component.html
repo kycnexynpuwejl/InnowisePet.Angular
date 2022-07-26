@@ -1,14 +1,14 @@
 <app-category-list></app-category-list>
 
 <div class="container">
-  <input [(ngModel)]="search" (keypress)="filterChange($event)"
+  <input [(ngModel)]="internalFilter.search" (keypress)="filterChange()"
          type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
 </div>
 
-<mat-paginator [length]="productCount"
-               [pageSize]="pageSize"
+<mat-paginator (page)="filterChange()"
+               [length]="productCount"
                [pageSizeOptions]="[3, 6, 9, 12]"
+               [pageSize]="internalFilter.pageSize"
                [showFirstLastButtons]="true"
-               (page)="pageOnChange($event)"
                aria-label="Select page">
 </mat-paginator>

@@ -3,6 +3,7 @@ import {Injectable, Input} from '@angular/core';
 import {debounceTime, Observable} from 'rxjs';
 import { IProduct } from '../models/product.model';
 import {PaginatedProducts} from "../models/paginated-products";
+import {FilterModel} from "../models/filter.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(pageSize: number, pageNumber: number, search: string): Observable<PaginatedProducts>{
-    return this.http.get<PaginatedProducts>(`https://localhost:7001/api/product?pagesize=${pageSize}&pagenumber=${pageNumber}&search=${search}`)
+  getProducts(filter: FilterModel): Observable<PaginatedProducts>{
+    return this.http.post<PaginatedProducts>('https://localhost:7001/api/product', filter);
   }
 
   getProductById(id: string): Observable<IProduct> {

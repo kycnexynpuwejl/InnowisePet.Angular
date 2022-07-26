@@ -1,8 +1,6 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {PageEvent} from "@angular/material/paginator";
-import {IProduct} from "../../models/product.model";
-import {ProductService} from "../../services/product.service";
-import {ActivatedRoute} from "@angular/router";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
+import {FilterModel} from "../../models/filter.model";
 
 @Component({
   selector: 'app-filter',
@@ -10,125 +8,24 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class FilterComponent implements OnInit {
 
-  products: IProduct[] = []
-  productCount: number
+  @Output()
+  filter = new EventEmitter<FilterModel>();
 
-  @Input() filter = false
+  @Input()
+  productCount: number;
 
-  @Input() @Output() pageSize = 6
+  internalFilter: FilterModel;
 
-  @Input() @Output() pageNumber = 1
-
-  @Input() @Output() search = ''
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
-
-  constructor(private productService: ProductService,
-              private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit() {
-
-    if (!this.filter) {
-
-      this.productService.getProducts(this.pageSize, this.pageNumber, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-
-        });
-
-    } else {
-
-      this.productService.getProductsByCategoryId(this.route.snapshot.params['id'], this.pageSize, this.pageNumber, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-        })
-    }
+    this.internalFilter.pageSize = 6;
+    this.internalFilter.pageNumber = 1;
+    this.internalFilter.search = '';
   }
 
-  pageOnChange($event: PageEvent) {
-
-    this.pageEvent = $event
-    this.pageSize = this.pageEvent.pageSize
-    this.pageNumber = this.pageEvent.pageIndex
-
-    if (!this.filter) {
-      this.productService.getProducts(this.pageSize, this.pageNumber + 1, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-
-        });
-
-    } else {
-
-      this.productService.getProductsByCategoryId(this.route.snapshot.params['id'], this.pageEvent.pageSize, this.pageEvent.pageIndex + 1, this.search)
-        .subscribe(response => {
-
-          this.products = response.paginatedProducts
-          this.productCount = response.productCount
-
-
-          for (let i = 0; i < this.products.length; i++) {
-            this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-          }
-        })
-    }
-
-  }
-
-
-
-  filterChange($event: KeyboardEvent) {
-
-    if($event.keyCode == 13)
-    {
-      if (!this.filter) {
-
-        this.productService.getProducts(this.pageSize, 1, this.search)
-          .subscribe(response => {
-
-            this.products = response.paginatedProducts
-            this.productCount = response.productCount
-
-            for (let i = 0; i < this.products.length; i++) {
-              this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-            }
-
-          })
-
-      } else {
-
-        this.productService.getProductsByCategoryId(this.route.snapshot.params['id'], this.pageSize, 1, this.search)
-          .subscribe(response => {
-
-            this.products = response.paginatedProducts
-            this.productCount = response.productCount
-
-
-            for (let i = 0; i < this.products.length; i++) {
-              this.products[i].imageUrl = "/assets/images/" + this.products[i].imageUrl
-            }
-          })
-      }
-    }
+  filterChange() {
+    this.filter.emit(this.internalFilter);
   }
 }

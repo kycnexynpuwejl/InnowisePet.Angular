@@ -1,2 +1,2 @@
-<app-filter></app-filter>
-<app-product-list></app-product-list>
+<app-filter [productCount]="productCount" (filter)="filterChange($event)"></app-filter>
+<app-product-list [filter]="filter" (productCount)="productCountChange($event)"></app-product-list>
