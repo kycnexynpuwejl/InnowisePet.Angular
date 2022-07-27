@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FilterModel} from "../../models/filter.model";
 
 @Component({
@@ -6,13 +6,16 @@ import {FilterModel} from "../../models/filter.model";
   templateUrl: './homepage.component.html'
 })
 export class HomepageComponent implements OnInit {
-  productCount: any;
-  filter: FilterModel;
+
+  public filter: FilterModel;
+  public productCount: number;
 
   constructor() {
+
   }
 
   ngOnInit(): void {
+
   }
 
   filterChange($event: FilterModel) {

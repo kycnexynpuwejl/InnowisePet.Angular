@@ -14,15 +14,19 @@ export class FilterComponent implements OnInit {
   @Input()
   productCount: number;
 
-  internalFilter: FilterModel;
+  internalFilter: FilterModel = {
+    pageNumber: 1,
+    search: '',
+    pageSize: 6,
+    categoryId: ''
+  };
 
   constructor() {
+
   }
 
   ngOnInit() {
-    this.internalFilter.pageSize = 6;
-    this.internalFilter.pageNumber = 1;
-    this.internalFilter.search = '';
+    this.filter.emit(this.internalFilter);
   }
 
   filterChange() {
