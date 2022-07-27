@@ -20,7 +20,7 @@ export class ProductService {
     return this.http.get<IProduct>(`https://localhost:7001/api/product/${id}`)
   }
 
-  getProductsByCategoryId(id: string, pageSize: number, pageNumber: number, search: string): Observable<PaginatedProducts> {
-    return this.http.get<PaginatedProducts>(`https://localhost:7001/api/product/category/${id}?pagesize=${pageSize}&pagenumber=${pageNumber}&search=${search}`)
-  }
+  // getProductsByCategoryId(id: string, pageSize: number, pageNumber: number, search: string): Observable<PaginatedProducts> {
+  //   return this.http.get<PaginatedProducts>(`https://localhost:7001/api/product/category/${id}?pagesize=${pageSize}&pagenumber=${pageNumber}&search=${search}`)
+  // }
 }

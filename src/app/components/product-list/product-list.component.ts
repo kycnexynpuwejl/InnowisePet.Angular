@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, DoCheck, SimpleChanges, OnChanges} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {IProduct} from '../../models/product.model';
 import {FilterModel} from "../../models/filter.model";
@@ -10,11 +10,11 @@ import {FilterModel} from "../../models/filter.model";
 })
 
 
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnChanges{
 
   products: IProduct[] = []
 
-  @Input() filter: FilterModel;
+  @Input() filter: FilterModel = {};
 
   @Output() productCount = new EventEmitter<number>();
 
@@ -22,8 +22,7 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService) {
   }
 
-  ngOnInit() {
-
+  loadProducts(): any{
     this.productService.getProducts(this.filter)
       .subscribe(response => {
 
@@ -36,4 +35,11 @@ export class ProductListComponent implements OnInit {
       });
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.filter){
+      console.log('FILTR PRILETEL')
+      console.log(this.filter)
+      this.loadProducts()
+    }
+  }
 }

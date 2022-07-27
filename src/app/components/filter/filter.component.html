@@ -1,11 +1,11 @@
-<app-category-list></app-category-list>
+<app-category-list (categoryId)="categoryId"></app-category-list>
 
 <div class="container">
-  <input [(ngModel)]="internalFilter.search" (keypress)="filterChange()"
+  <input [(ngModel)]="internalFilter.search" (keypress)="filterChange($event)"
          type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
 </div>
 
-<mat-paginator (page)="filterChange()"
+<mat-paginator (page)="paginatorChange($event)"
                [length]="productCount"
                [pageSizeOptions]="[3, 6, 9, 12]"
                [pageSize]="internalFilter.pageSize"

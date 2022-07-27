@@ -1,5 +1,8 @@
 <div class="container py-4 text-center grid grid-cols-3">
     <div class="container btn btn-outline-primary" *ngFor="let category of categories">
-        <div class="text-dark text-lg" [routerLink]="['/category', category.id]">{{category.title}}</div>
+        <div class="text-dark text-lg" (click)="categoryChange(category.id)">
+          {{category.title}}
+        </div>
+
     </div>
 </div>
