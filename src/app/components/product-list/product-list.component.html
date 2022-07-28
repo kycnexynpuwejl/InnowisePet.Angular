@@ -2,8 +2,11 @@
 
   <div class="container">
 
+    <div *ngIf="products.length == 0" class="container h1 text-center py-5">
+      No products
+    </div>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="products.length > 0">
       <div class="col" *ngFor="let product of products">
         <div class="card shadow-sm">
 

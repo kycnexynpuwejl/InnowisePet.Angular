@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {CategoryService} from 'src/app/services/category.service';
 import {ICategory} from '../../models/category.model';
 
@@ -13,6 +13,8 @@ export class CategoryListComponent implements OnInit {
   @Output()
   categoryId = new EventEmitter<string>();
 
+  @ViewChildren('categorybtn') buttons: QueryList<any>
+
   constructor(private categoryService: CategoryService) {
   }
 
@@ -21,17 +23,14 @@ export class CategoryListComponent implements OnInit {
       this.categories = response)
   }
 
-  categoryChange(categoryId:string, i: number) {
-      // @ts-ignore
-    if(document.querySelectorAll('#categorybtn')[i].style.backgroundColor == "gray") {
-      // @ts-ignore
-      document.querySelectorAll('#categorybtn')[i].style.backgroundColor = "white"
+  categoryChange(categoryId: string, i: number) {
+
+    if(this.buttons.get(i).nativeElement.style.backgroundColor == "gray") {
+      this.buttons.get(i).nativeElement.style.backgroundColor = "white"
     }
     else{
-      // @ts-ignore
-      document.querySelectorAll('#categorybtn').forEach(c => c.style.backgroundColor = "white")
-      // @ts-ignore
-      document.querySelectorAll('#categorybtn')[i].style.backgroundColor = "gray"
+      this.buttons.forEach(b => b.nativeElement.style.backgroundColor = "white")
+      this.buttons.get(i).nativeElement.style.backgroundColor = "gray"
     }
 
     this.categoryId.emit(categoryId)

@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 
 import {FilterModel} from "../../models/filter.model";
-import {PageEvent} from "@angular/material/paginator";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-filter',
@@ -15,12 +15,15 @@ export class FilterComponent implements OnInit {
   @Input()
   productCount: number;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   internalFilter: FilterModel = {
     pageNumber: 1,
     search: '',
     pageSize: 6,
     categoryId: ''
   };
+
 
   constructor() {
 
@@ -34,6 +37,7 @@ export class FilterComponent implements OnInit {
     if($event.keyCode == 13){
       this.internalFilter.pageNumber = 1
       this.filter.emit(this.internalFilter);
+      this.paginator.firstPage();
     }
   }
 
@@ -50,6 +54,8 @@ export class FilterComponent implements OnInit {
     else{
       this.internalFilter.categoryId = $event
     }
+    this.internalFilter.pageNumber = 1
+    this.paginator.firstPage();
     this.filter.emit(this.internalFilter)
   }
 
