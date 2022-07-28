@@ -4,12 +4,15 @@
   <input [(ngModel)]="internalFilter.search" (keypress)="filterChange($event)"
          type="text" class="w-100 border-8 py-2 mb-2" placeholder="Search products...">
 </div>
+<div class="container">
+  <mat-paginator (page)="paginatorChange($event)"
+                 [length]="productCount"
+                 [pageSizeOptions]="[3, 6, 9, 12]"
+                 [pageSize]="internalFilter.pageSize"
+                 [pageIndex]="0"
+                 [showFirstLastButtons]="true"
+                 aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
 
-<mat-paginator (page)="paginatorChange($event)"
-               [length]="productCount"
-               [pageSizeOptions]="[3, 6, 9, 12]"
-               [pageSize]="internalFilter.pageSize"
-               [pageIndex]="0"
-               [showFirstLastButtons]="true"
-               aria-label="Select page">
-</mat-paginator>

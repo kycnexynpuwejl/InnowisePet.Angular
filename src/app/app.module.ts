@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { LandingComponent } from './components/landing/landing.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { HeaderComponent } from './components/header/header.component';
+import {HeaderComponent} from './components/header/header.component';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
