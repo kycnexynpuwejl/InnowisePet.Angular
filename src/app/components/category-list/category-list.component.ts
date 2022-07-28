@@ -10,8 +10,6 @@ export class CategoryListComponent implements OnInit {
 
   categories: ICategory[] = []
 
-  internalCategoryId = ''
-
   @Output()
   categoryId = new EventEmitter<string>();
 
@@ -23,9 +21,19 @@ export class CategoryListComponent implements OnInit {
       this.categories = response)
   }
 
-  categoryChange(categoryId:string) {
-    this.internalCategoryId = categoryId
-    console.log(this.internalCategoryId)
-    this.categoryId.emit(this.internalCategoryId)
+  categoryChange(categoryId:string, i: number) {
+      // @ts-ignore
+    if(document.querySelectorAll('#categorybtn')[i].style.backgroundColor == "gray") {
+      // @ts-ignore
+      document.querySelectorAll('#categorybtn')[i].style.backgroundColor = "white"
+    }
+    else{
+      // @ts-ignore
+      document.querySelectorAll('#categorybtn').forEach(c => c.style.backgroundColor = "white")
+      // @ts-ignore
+      document.querySelectorAll('#categorybtn')[i].style.backgroundColor = "gray"
+    }
+
+    this.categoryId.emit(categoryId)
   }
 }

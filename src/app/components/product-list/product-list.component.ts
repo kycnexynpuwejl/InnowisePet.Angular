@@ -37,8 +37,6 @@ export class ProductListComponent implements OnChanges{
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.filter){
-      console.log('FILTR PRILETEL')
-      console.log(this.filter)
       this.loadProducts()
     }
   }

@@ -21,10 +21,8 @@ export class HomepageComponent implements OnInit {
 
   filterChange($event: FilterModel) {
     this.filter = $event;
-    this.filter = Object.assign({}, this.filter);
-    console.log('--------------------')
-    console.log('PARENT FILTER')
-    console.log(this.filter)
+    this.filter = {...this.filter}
+
   }
 
   productCountChange($event: number) {

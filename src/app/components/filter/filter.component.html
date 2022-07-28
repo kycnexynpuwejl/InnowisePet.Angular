@@ -1,4 +1,4 @@
-<app-category-list (categoryId)="categoryId"></app-category-list>
+<app-category-list (categoryId)="categoryChange($event)"></app-category-list>
 
 <div class="container">
   <input [(ngModel)]="internalFilter.search" (keypress)="filterChange($event)"

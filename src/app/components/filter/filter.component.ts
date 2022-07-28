@@ -15,9 +15,6 @@ export class FilterComponent implements OnInit {
   @Input()
   productCount: number;
 
-  @Input()
-  categoryId: string;
-
   internalFilter: FilterModel = {
     pageNumber: 1,
     search: '',
@@ -35,26 +32,30 @@ export class FilterComponent implements OnInit {
 
   filterChange($event: KeyboardEvent) {
     if($event.keyCode == 13){
-      console.log('filter event -- ' + this.internalFilter.search)
-      console.log('INTERNALFILTER')
-      console.log(this.internalFilter)
+      this.internalFilter.pageNumber = 1
       this.filter.emit(this.internalFilter);
     }
   }
 
   paginatorChange($event: PageEvent) {
-    console.log('paginator event -- ' + $event.pageSize + ' ' + ($event.pageIndex + 1))
     this.internalFilter.pageSize = $event.pageSize
     this.internalFilter.pageNumber = $event.pageIndex + 1
-    console.log('INTERNALFILTER')
-    console.log(this.internalFilter)
     this.filter.emit(this.internalFilter);
+  }
+
+  categoryChange($event: string) {
+    if(this.internalFilter.categoryId == $event){
+      this.internalFilter.categoryId = ''
+    }
+    else{
+      this.internalFilter.categoryId = $event
+    }
+    this.filter.emit(this.internalFilter)
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.productCount) {
       this.productCount = changes.productCount.currentValue
-      console.log('COUNT - ' + this.productCount)
     }
   }
 }

@@ -1,8 +1,13 @@
-<div class="container py-4 text-center grid grid-cols-3">
-    <div class="container btn btn-outline-primary" *ngFor="let category of categories">
-        <div class="text-dark text-lg" (click)="categoryChange(category.id)">
+<div class="container py-2 text-center grid grid-cols-3">
+    <div class="container btn btn-outline-secondary"
+         id="categorybtn"
+         #categorybtn
+         *ngFor="let category of categories; let i=index"
+         (click)="categoryChange(category.id, i)">
+
+      <div class="text-zinc-900 text-xl">
           {{category.title}}
-        </div>
+      </div>
 
     </div>
 </div>
