@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginComponent} from "../login/login.component";
 import {SignupComponent} from "../signup/signup.component";
@@ -9,6 +9,10 @@ import {SignupComponent} from "../signup/signup.component";
 })
 export class HeaderComponent implements OnInit {
 
+  @ViewChild('loginModal') loginModal: ElementRef<HTMLElement>;
+
+  dialogRef: any;
+
   constructor(private dialog: MatDialog) {
   }
 
@@ -16,10 +20,17 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent).componentInstance.statusHandler.subscribe((x: any) => this.loginEventHandler(x))
   }
 
   signup() {
     this.dialog.open(SignupComponent)
+  }
+
+  loginEventHandler($event: any) {
+    if($event == 'success') {
+      this.dialog.closeAll()
+    }
+    else{console.log('IDI NAXYI')}
   }
 }

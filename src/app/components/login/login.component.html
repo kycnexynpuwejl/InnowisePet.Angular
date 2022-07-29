@@ -1,19 +1,19 @@
 <form [formGroup]="loginForm" (ngSubmit)="submit()">
   <div>
-  <label for="username">Username: </label>
+  <label for="usernameLogin">Username: </label>
   <input
-    id="username"
+    id="usernameLogin"
     formControlName="username"
     type="text"
-    class="border w-full py-2 px-4 mb-2"
+    class="border w-full py-2 px-4 mb-2 placeholder-black text-black"
     placeholder="Username"
   >
-  <label for="password">Password: </label>
+  <label for="passwordLogin">Password: </label>
   <input
-    id="password"
+    id="passwordLogin"
     formControlName="password"
     type="password"
-    class="border text-black w-full py-2 px-4 mb-2"
+    class="border w-full py-2 px-4 mb-2 placeholder-black text-black"
     placeholder="Password"
   >
   <button

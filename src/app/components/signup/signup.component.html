@@ -1,1 +1,26 @@
-<p>signup works!</p>
+<form [formGroup]="signupForm" (ngSubmit)="submit()">
+  <div>
+    <label for="usernameRegister">Username: </label>
+    <input
+      id="usernameRegister"
+      formControlName="username"
+      type="text"
+      class="border w-full py-2 px-4 mb-2 placeholder-black text-black"
+      placeholder="Username"
+    >
+    <label for="passwordRegister">Password: </label>
+    <input
+      id="passwordRegister"
+      formControlName="password"
+      type="password"
+      class="border w-full py-2 px-4 mb-2 placeholder-black text-black"
+      placeholder="Password"
+    >
+    <button
+      type="submit"
+      class="py-2 px-4 bg-blue-600 text-white"
+    >
+      Register
+    </button>
+  </div>
+</form>

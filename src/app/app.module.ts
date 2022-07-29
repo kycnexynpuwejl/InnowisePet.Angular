@@ -21,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './routes';
-
+import {httpInterceptorProviders} from './http-interceptors';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTabsModule} from "@angular/material/tabs";
 import { FooterComponent } from './components/footer/footer.component';
@@ -63,7 +63,9 @@ import { SignupComponent } from './components/signup/signup.component';
     MatFormFieldModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+  httpInterceptorProviders
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
