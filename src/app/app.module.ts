@@ -29,6 +29,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { FilterComponent } from './components/filter/filter.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { FilterComponent } from './components/filter/filter.component';
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

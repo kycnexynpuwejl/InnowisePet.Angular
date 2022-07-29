@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output, DoCheck, SimpleChanges, 
 import {ProductService} from '../../services/product.service';
 import {IProduct} from '../../models/product.model';
 import {FilterModel} from "../../models/filter.model";
+import {MatDialog} from "@angular/material/dialog";
+import {ProductDetailsComponent} from "../product-details/product-details.component";
 
 
 @Component({
@@ -19,8 +21,8 @@ export class ProductListComponent implements OnChanges{
   @Output() productCount = new EventEmitter<number>();
 
 
-  constructor(private productService: ProductService) {
-  }
+  constructor(private productService: ProductService,
+              private dialog: MatDialog) { }
 
   loadProducts(): any{
     this.productService.getProducts(this.filter)
@@ -39,5 +41,13 @@ export class ProductListComponent implements OnChanges{
     if(changes.filter){
       this.loadProducts()
     }
+  }
+
+  openProductDetails(id: string) {
+    this.dialog.open(ProductDetailsComponent, {
+      data: {
+        id: id
+      }
+    })
   }
 }
