@@ -30,6 +30,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { FilterComponent } from './components/filter/filter.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     CategoryDetailsComponent,
     HomepageComponent,
     FooterComponent,
-    FilterComponent
+    FilterComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

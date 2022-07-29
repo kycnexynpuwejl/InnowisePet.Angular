@@ -43,7 +43,7 @@ export class ProductListComponent implements OnChanges{
     }
   }
 
-  openProductDetails(id: string) {
+  productDetails(id: string) {
     this.dialog.open(ProductDetailsComponent, {
       data: {
         id: id
