@@ -8,6 +8,8 @@ import {AuthService} from "../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
+  tokeni: any
+
   loginForm = new FormGroup( {
     username: new FormControl<string>(''),
     password: new FormControl<string>('')
@@ -20,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.authService.login(this.loginForm.value.username ? this.loginForm.value.username : '',
-     this.loginForm.value.password ? this.loginForm.value.password : '')
+     this.loginForm.value.password ? this.loginForm.value.password : '').subscribe(response =>
+    this.tokeni = response)
+    console.log(this.tokeni)
   }
 }
